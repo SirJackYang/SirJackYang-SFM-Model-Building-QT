@@ -1,0 +1,31 @@
+<RCC>
+    <qresource prefix="/">
+        <file>Images/ImageFile.png</file>
+        <file>Images/Image.png</file>
+        <file>Images/Pt.png</file>
+        <file>Images/PointMatch.png</file>
+        <file>Images/PosCal.png</file>
+        <file>Images/DenseMatch.png</file>
+        <file>Images/ModelBuild.png</file>
+        <file>Images/model.png</file>
+        <file>Images/picture.png</file>
+        <file>Images/models.png</file>
+        <file>Images/pictures.png</file>
+        <file>Images/cloud2img.png</file>
+        <file>Images/viewBack.png</file>
+        <file>Images/viewBottom.png</file>
+        <file>Images/viewFront.png</file>
+        <file>Images/viewLeft.png</file>
+        <file>Images/viewRight.png</file>
+        <file>Images/viewTop.png</file>
+        <file>Images/suit.png</file>
+        <file>Images/startimg.png</file>
+        <file>Images/dataout.png</file>
+        <file>Images/wenli.png</file>
+        <file>Images/closeshader.png</file>
+        <file>Images/setshader1.png</file>
+        <file>Images/setshader2.png</file>
+        <file>Images/camera.png</file>
+        <file>Images/wait.gif</file>
+    </qresource>
+</RCC>

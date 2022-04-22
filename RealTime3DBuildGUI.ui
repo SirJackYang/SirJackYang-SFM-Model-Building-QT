@@ -1,0 +1,753 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>RealTime3DBuildGUI</class>
+ <widget class="QWidget" name="RealTime3DBuildGUI">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>1245</width>
+    <height>949</height>
+   </rect>
+  </property>
+  <property name="acceptDrops">
+   <bool>false</bool>
+  </property>
+  <property name="windowTitle">
+   <string>实时建模</string>
+  </property>
+  <property name="styleSheet">
+   <string notr="true">/*
+AMOLED Style Sheet for QT Applications
+Author: Jaime A. Quiroga P.
+Company: GTRONICK
+Last updated: 01/10/2021, 15:49.
+Available at: https://github.com/GTRONICK/QSS/blob/master/AMOLED.qss
+*/
+Line {
+	background-color:#ffffff;
+}
+QTreeWidget{
+	background-color:#ffffff;
+}
+
+QToolButton{
+	background-color:#ffffff;
+	border:0px;
+}
+QToolButton:hover{
+	background-color:#dcdcdc;
+	border:0px;
+}
+
+</string>
+  </property>
+  <layout class="QVBoxLayout" name="verticalLayout_3">
+   <item>
+    <layout class="QVBoxLayout" name="verticalLayout" stretch="0,6">
+     <property name="spacing">
+      <number>4</number>
+     </property>
+     <item>
+      <widget class="QTabWidget" name="tabWidget_fun">
+       <property name="currentIndex">
+        <number>0</number>
+       </property>
+       <widget class="QWidget" name="tab_file">
+        <property name="sizePolicy">
+         <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
+          <horstretch>0</horstretch>
+          <verstretch>0</verstretch>
+         </sizepolicy>
+        </property>
+        <attribute name="title">
+         <string>文件</string>
+        </attribute>
+        <layout class="QHBoxLayout" name="horizontalLayout">
+         <item>
+          <widget class="QToolButton" name="toolButton_ImageFile">
+           <property name="text">
+            <string>影像文件夹</string>
+           </property>
+           <property name="icon">
+            <iconset>
+             <normalon>:/Images/ImageFile.png</normalon>
+            </iconset>
+           </property>
+           <property name="iconSize">
+            <size>
+             <width>75</width>
+             <height>75</height>
+            </size>
+           </property>
+           <property name="toolButtonStyle">
+            <enum>Qt::ToolButtonTextUnderIcon</enum>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QToolButton" name="toolButton_Image">
+           <property name="text">
+            <string>单影像文件</string>
+           </property>
+           <property name="icon">
+            <iconset>
+             <normalon>:/Images/Image.png</normalon>
+            </iconset>
+           </property>
+           <property name="iconSize">
+            <size>
+             <width>75</width>
+             <height>75</height>
+            </size>
+           </property>
+           <property name="toolButtonStyle">
+            <enum>Qt::ToolButtonTextUnderIcon</enum>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="Line" name="line">
+           <property name="orientation">
+            <enum>Qt::Vertical</enum>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QToolButton" name="toolButton_Pt">
+           <property name="text">
+            <string>单点云文件</string>
+           </property>
+           <property name="icon">
+            <iconset>
+             <normalon>:/Images/Pt.png</normalon>
+            </iconset>
+           </property>
+           <property name="iconSize">
+            <size>
+             <width>75</width>
+             <height>75</height>
+            </size>
+           </property>
+           <property name="toolButtonStyle">
+            <enum>Qt::ToolButtonTextUnderIcon</enum>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="Line" name="line_2">
+           <property name="orientation">
+            <enum>Qt::Vertical</enum>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QToolButton" name="toolButton_GetOutPath">
+           <property name="sizePolicy">
+            <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
+             <horstretch>0</horstretch>
+             <verstretch>0</verstretch>
+            </sizepolicy>
+           </property>
+           <property name="text">
+            <string>输出文件夹</string>
+           </property>
+           <property name="icon">
+            <iconset resource="IconsSet.qrc">
+             <normaloff>:/Images/dataout.png</normaloff>:/Images/dataout.png</iconset>
+           </property>
+           <property name="iconSize">
+            <size>
+             <width>75</width>
+             <height>75</height>
+            </size>
+           </property>
+           <property name="toolButtonStyle">
+            <enum>Qt::ToolButtonTextUnderIcon</enum>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <spacer name="horizontalSpacer">
+           <property name="orientation">
+            <enum>Qt::Horizontal</enum>
+           </property>
+           <property name="sizeHint" stdset="0">
+            <size>
+             <width>413</width>
+             <height>20</height>
+            </size>
+           </property>
+          </spacer>
+         </item>
+        </layout>
+       </widget>
+       <widget class="QWidget" name="tab_deal">
+        <property name="sizePolicy">
+         <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
+          <horstretch>0</horstretch>
+          <verstretch>0</verstretch>
+         </sizepolicy>
+        </property>
+        <attribute name="title">
+         <string>建模</string>
+        </attribute>
+        <layout class="QHBoxLayout" name="horizontalLayout_2">
+         <item>
+          <widget class="QToolButton" name="toolButton_PointMatch">
+           <property name="sizePolicy">
+            <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
+             <horstretch>0</horstretch>
+             <verstretch>0</verstretch>
+            </sizepolicy>
+           </property>
+           <property name="text">
+            <string>同名点匹配</string>
+           </property>
+           <property name="icon">
+            <iconset>
+             <normalon>:/Images/PointMatch.png</normalon>
+            </iconset>
+           </property>
+           <property name="iconSize">
+            <size>
+             <width>75</width>
+             <height>75</height>
+            </size>
+           </property>
+           <property name="toolButtonStyle">
+            <enum>Qt::ToolButtonTextUnderIcon</enum>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QToolButton" name="toolButton_PosCal">
+           <property name="text">
+            <string> 稀疏重建 </string>
+           </property>
+           <property name="icon">
+            <iconset>
+             <normalon>:/Images/PosCal.png</normalon>
+            </iconset>
+           </property>
+           <property name="iconSize">
+            <size>
+             <width>75</width>
+             <height>75</height>
+            </size>
+           </property>
+           <property name="toolButtonStyle">
+            <enum>Qt::ToolButtonTextUnderIcon</enum>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="Line" name="line_3">
+           <property name="orientation">
+            <enum>Qt::Vertical</enum>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QToolButton" name="toolButton_DenseMatch">
+           <property name="text">
+            <string> 稠密重建 </string>
+           </property>
+           <property name="icon">
+            <iconset>
+             <normalon>:/Images/DenseMatch.png</normalon>
+            </iconset>
+           </property>
+           <property name="iconSize">
+            <size>
+             <width>75</width>
+             <height>75</height>
+            </size>
+           </property>
+           <property name="toolButtonStyle">
+            <enum>Qt::ToolButtonTextUnderIcon</enum>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="Line" name="line_4">
+           <property name="orientation">
+            <enum>Qt::Vertical</enum>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QToolButton" name="toolButton_ModelBuild">
+           <property name="text">
+            <string> 模型构网 </string>
+           </property>
+           <property name="icon">
+            <iconset>
+             <normalon>:/Images/ModelBuild.png</normalon>
+            </iconset>
+           </property>
+           <property name="iconSize">
+            <size>
+             <width>75</width>
+             <height>75</height>
+            </size>
+           </property>
+           <property name="toolButtonStyle">
+            <enum>Qt::ToolButtonTextUnderIcon</enum>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QToolButton" name="toolButton_GetTexture">
+           <property name="text">
+            <string> 纹理映射 </string>
+           </property>
+           <property name="icon">
+            <iconset resource="IconsSet.qrc">
+             <normaloff>:/Images/wenli.png</normaloff>:/Images/wenli.png</iconset>
+           </property>
+           <property name="iconSize">
+            <size>
+             <width>75</width>
+             <height>75</height>
+            </size>
+           </property>
+           <property name="toolButtonStyle">
+            <enum>Qt::ToolButtonTextUnderIcon</enum>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <spacer name="horizontalSpacer_2">
+           <property name="orientation">
+            <enum>Qt::Horizontal</enum>
+           </property>
+           <property name="sizeHint" stdset="0">
+            <size>
+             <width>521</width>
+             <height>20</height>
+            </size>
+           </property>
+          </spacer>
+         </item>
+        </layout>
+       </widget>
+       <widget class="QWidget" name="tab_ptcloud">
+        <attribute name="title">
+         <string>点云</string>
+        </attribute>
+        <layout class="QHBoxLayout" name="horizontalLayout_4">
+         <item>
+          <layout class="QVBoxLayout" name="verticalLayout_2">
+           <property name="spacing">
+            <number>10</number>
+           </property>
+           <item>
+            <layout class="QGridLayout" name="gridLayout_3">
+             <property name="spacing">
+              <number>4</number>
+             </property>
+             <item row="1" column="3">
+              <widget class="QToolButton" name="toolButtonSetViewBack">
+               <property name="text">
+                <string/>
+               </property>
+               <property name="icon">
+                <iconset resource="IconsSet.qrc">
+                 <normaloff>:/Images/viewBack.png</normaloff>:/Images/viewBack.png</iconset>
+               </property>
+               <property name="iconSize">
+                <size>
+                 <width>30</width>
+                 <height>30</height>
+                </size>
+               </property>
+              </widget>
+             </item>
+             <item row="0" column="3">
+              <widget class="QToolButton" name="toolButtonSetViewFront">
+               <property name="text">
+                <string/>
+               </property>
+               <property name="icon">
+                <iconset resource="IconsSet.qrc">
+                 <normaloff>:/Images/viewFront.png</normaloff>:/Images/viewFront.png</iconset>
+               </property>
+               <property name="iconSize">
+                <size>
+                 <width>30</width>
+                 <height>30</height>
+                </size>
+               </property>
+              </widget>
+             </item>
+             <item row="0" column="2">
+              <widget class="QToolButton" name="toolButtonSetViewLeft">
+               <property name="text">
+                <string/>
+               </property>
+               <property name="icon">
+                <iconset resource="IconsSet.qrc">
+                 <normaloff>:/Images/viewLeft.png</normaloff>:/Images/viewLeft.png</iconset>
+               </property>
+               <property name="iconSize">
+                <size>
+                 <width>30</width>
+                 <height>30</height>
+                </size>
+               </property>
+              </widget>
+             </item>
+             <item row="0" column="1">
+              <widget class="QToolButton" name="toolButtonSetViewTop">
+               <property name="text">
+                <string/>
+               </property>
+               <property name="icon">
+                <iconset resource="IconsSet.qrc">
+                 <normaloff>:/Images/viewTop.png</normaloff>:/Images/viewTop.png</iconset>
+               </property>
+               <property name="iconSize">
+                <size>
+                 <width>30</width>
+                 <height>30</height>
+                </size>
+               </property>
+              </widget>
+             </item>
+             <item row="1" column="1">
+              <widget class="QToolButton" name="toolButtonSetViewBottom">
+               <property name="text">
+                <string/>
+               </property>
+               <property name="icon">
+                <iconset resource="IconsSet.qrc">
+                 <normaloff>:/Images/viewBottom.png</normaloff>:/Images/viewBottom.png</iconset>
+               </property>
+               <property name="iconSize">
+                <size>
+                 <width>30</width>
+                 <height>30</height>
+                </size>
+               </property>
+              </widget>
+             </item>
+             <item row="1" column="2">
+              <widget class="QToolButton" name="toolButtonSetViewRight">
+               <property name="text">
+                <string/>
+               </property>
+               <property name="icon">
+                <iconset resource="IconsSet.qrc">
+                 <normaloff>:/Images/viewRight.png</normaloff>:/Images/viewRight.png</iconset>
+               </property>
+               <property name="iconSize">
+                <size>
+                 <width>30</width>
+                 <height>30</height>
+                </size>
+               </property>
+              </widget>
+             </item>
+            </layout>
+           </item>
+           <item>
+            <widget class="QLabel" name="label">
+             <property name="text">
+              <string>  显示方向 </string>
+             </property>
+            </widget>
+           </item>
+          </layout>
+         </item>
+         <item>
+          <widget class="Line" name="line_7">
+           <property name="orientation">
+            <enum>Qt::Vertical</enum>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <layout class="QVBoxLayout" name="verticalLayout_4">
+           <item>
+            <layout class="QHBoxLayout" name="horizontalLayout_3">
+             <item>
+              <widget class="QToolButton" name="toolButton_SetShader">
+               <property name="text">
+                <string/>
+               </property>
+               <property name="icon">
+                <iconset resource="IconsSet.qrc">
+                 <normaloff>:/Images/setshader1.png</normaloff>:/Images/setshader1.png</iconset>
+               </property>
+               <property name="iconSize">
+                <size>
+                 <width>68</width>
+                 <height>68</height>
+                </size>
+               </property>
+               <property name="toolButtonStyle">
+                <enum>Qt::ToolButtonIconOnly</enum>
+               </property>
+              </widget>
+             </item>
+             <item>
+              <widget class="QToolButton" name="toolButton_SetShader2">
+               <property name="text">
+                <string/>
+               </property>
+               <property name="icon">
+                <iconset resource="IconsSet.qrc">
+                 <normaloff>:/Images/setshader2.png</normaloff>:/Images/setshader2.png</iconset>
+               </property>
+               <property name="iconSize">
+                <size>
+                 <width>68</width>
+                 <height>68</height>
+                </size>
+               </property>
+               <property name="toolButtonStyle">
+                <enum>Qt::ToolButtonIconOnly</enum>
+               </property>
+              </widget>
+             </item>
+             <item>
+              <widget class="QToolButton" name="toolButton_CloseShader">
+               <property name="text">
+                <string/>
+               </property>
+               <property name="icon">
+                <iconset resource="IconsSet.qrc">
+                 <normaloff>:/Images/closeshader.png</normaloff>:/Images/closeshader.png</iconset>
+               </property>
+               <property name="iconSize">
+                <size>
+                 <width>68</width>
+                 <height>68</height>
+                </size>
+               </property>
+               <property name="toolButtonStyle">
+                <enum>Qt::ToolButtonIconOnly</enum>
+               </property>
+              </widget>
+             </item>
+            </layout>
+           </item>
+           <item>
+            <widget class="QLabel" name="label_3">
+             <property name="text">
+              <string>设置Shader </string>
+             </property>
+             <property name="alignment">
+              <set>Qt::AlignCenter</set>
+             </property>
+            </widget>
+           </item>
+          </layout>
+         </item>
+         <item>
+          <widget class="Line" name="line_5">
+           <property name="orientation">
+            <enum>Qt::Vertical</enum>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QToolButton" name="toolButton_Set">
+           <property name="text">
+            <string> 视图设置 </string>
+           </property>
+           <property name="icon">
+            <iconset resource="IconsSet.qrc">
+             <normaloff>:/Images/suit.png</normaloff>:/Images/suit.png</iconset>
+           </property>
+           <property name="iconSize">
+            <size>
+             <width>75</width>
+             <height>75</height>
+            </size>
+           </property>
+           <property name="toolButtonStyle">
+            <enum>Qt::ToolButtonTextUnderIcon</enum>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QToolButton" name="toolButton_CameraSet">
+           <property name="text">
+            <string> 相机设置 </string>
+           </property>
+           <property name="icon">
+            <iconset resource="IconsSet.qrc">
+             <normaloff>:/Images/camera.png</normaloff>:/Images/camera.png</iconset>
+           </property>
+           <property name="iconSize">
+            <size>
+             <width>75</width>
+             <height>75</height>
+            </size>
+           </property>
+           <property name="toolButtonStyle">
+            <enum>Qt::ToolButtonTextUnderIcon</enum>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="Line" name="line_6">
+           <property name="orientation">
+            <enum>Qt::Vertical</enum>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QToolButton" name="toolButton_Model2Img">
+           <property name="text">
+            <string> 保存视图 </string>
+           </property>
+           <property name="icon">
+            <iconset resource="IconsSet.qrc">
+             <normaloff>:/Images/cloud2img.png</normaloff>:/Images/cloud2img.png</iconset>
+           </property>
+           <property name="iconSize">
+            <size>
+             <width>75</width>
+             <height>75</height>
+            </size>
+           </property>
+           <property name="toolButtonStyle">
+            <enum>Qt::ToolButtonTextUnderIcon</enum>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <spacer name="horizontalSpacer_3">
+           <property name="orientation">
+            <enum>Qt::Horizontal</enum>
+           </property>
+           <property name="sizeHint" stdset="0">
+            <size>
+             <width>548</width>
+             <height>20</height>
+            </size>
+           </property>
+          </spacer>
+         </item>
+        </layout>
+       </widget>
+      </widget>
+     </item>
+     <item>
+      <widget class="QSplitter" name="splitter_2">
+       <property name="orientation">
+        <enum>Qt::Vertical</enum>
+       </property>
+       <widget class="QSplitter" name="splitter">
+        <property name="sizePolicy">
+         <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
+          <horstretch>0</horstretch>
+          <verstretch>0</verstretch>
+         </sizepolicy>
+        </property>
+        <property name="orientation">
+         <enum>Qt::Horizontal</enum>
+        </property>
+        <widget class="QTreeWidget" name="treeWidget_file">
+         <column>
+          <property name="text">
+           <string notr="true">1</string>
+          </property>
+         </column>
+        </widget>
+        <widget class="QTabWidget" name="tabWidget_show">
+         <property name="currentIndex">
+          <number>1</number>
+         </property>
+         <widget class="QWidget" name="tab_img">
+          <attribute name="title">
+           <string>影像</string>
+          </attribute>
+          <layout class="QGridLayout" name="gridLayout">
+           <property name="leftMargin">
+            <number>0</number>
+           </property>
+           <property name="topMargin">
+            <number>0</number>
+           </property>
+           <property name="rightMargin">
+            <number>0</number>
+           </property>
+           <property name="bottomMargin">
+            <number>0</number>
+           </property>
+           <property name="spacing">
+            <number>0</number>
+           </property>
+           <item row="0" column="0">
+            <widget class="MyQGraphicsView" name="graphicsView"/>
+           </item>
+          </layout>
+         </widget>
+         <widget class="QWidget" name="tab_model">
+          <attribute name="title">
+           <string>模型</string>
+          </attribute>
+          <layout class="QGridLayout" name="gridLayout_2">
+           <property name="leftMargin">
+            <number>0</number>
+           </property>
+           <property name="topMargin">
+            <number>0</number>
+           </property>
+           <property name="rightMargin">
+            <number>0</number>
+           </property>
+           <property name="bottomMargin">
+            <number>0</number>
+           </property>
+           <property name="spacing">
+            <number>0</number>
+           </property>
+           <item row="0" column="0">
+            <widget class="MyGLWidget" name="openGLWidget"/>
+           </item>
+          </layout>
+         </widget>
+        </widget>
+       </widget>
+       <widget class="QTextBrowser" name="textBrowser_log"/>
+      </widget>
+     </item>
+    </layout>
+   </item>
+   <item>
+    <widget class="QLabel" name="label_2">
+     <property name="sizePolicy">
+      <sizepolicy hsizetype="Expanding" vsizetype="Preferred">
+       <horstretch>0</horstretch>
+       <verstretch>0</verstretch>
+      </sizepolicy>
+     </property>
+     <property name="text">
+      <string>鼠标左键：旋转|鼠标右键：平移|鼠标滚轮：缩放</string>
+     </property>
+    </widget>
+   </item>
+  </layout>
+ </widget>
+ <customwidgets>
+  <customwidget>
+   <class>MyQGraphicsView</class>
+   <extends>QGraphicsView</extends>
+   <header>MyQGraphicsView.h</header>
+  </customwidget>
+  <customwidget>
+   <class>MyGLWidget</class>
+   <extends>QOpenGLWidget</extends>
+   <header location="global">MyGLWidget.h</header>
+  </customwidget>
+ </customwidgets>
+ <resources>
+  <include location="IconsSet.qrc"/>
+ </resources>
+ <connections/>
+</ui>
