@@ -4,7 +4,7 @@ A softWare for Multiple images 3D building
 
 The build used: MVG-MVS
 
-The 3D visual used: cloudcompare - ccviewer
+The 3D visual used: cloudcompare - ccGLWindow
 
 **How to use?**
 
